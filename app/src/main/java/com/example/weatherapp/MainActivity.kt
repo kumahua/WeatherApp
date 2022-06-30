@@ -2,17 +2,14 @@ package com.example.weatherapp
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.app.TaskStackBuilder.create
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat
 import android.icu.util.TimeZone
 import android.location.Location
 import android.location.LocationManager
-import android.media.audiofx.NoiseSuppressor.create
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,18 +18,13 @@ import android.provider.Settings
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatDelegate.create
-import androidx.core.app.ActivityCompat
 import com.example.weatherapp.Constants.LANG
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.databinding.DialogCustomProgressBinding
 import com.example.weatherapp.models.WeatherResponse
 import com.example.weatherapp.network.WeatherService
-import com.google.android.gms.common.images.ImageManager.create
 import com.google.android.gms.location.*
 import com.google.gson.Gson
 import com.karumi.dexter.Dexter
@@ -43,8 +35,6 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
-import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 
 class MainActivity : AppCompatActivity() {
@@ -67,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         // Initialize the SharedPreferences variable
         mSharedPreferences = getSharedPreferences(Constants.PREFERENCE_NAME, Context.MODE_PRIVATE)
 
-        setupUI()
+        //setupUI()
 
         if(!isLocationEnabled()) {
             Toast.makeText(
@@ -114,7 +104,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Dialog對話
     private fun showRationalDialogForPermissions() {
         AlertDialog.Builder(this)
             .setMessage("It Looks like you have turned off permissions")
@@ -138,13 +127,13 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun requestLocationData() {
-        val mlocationRequest = LocationRequest.create()?.apply {
+        val mlocationRequest = LocationRequest.create().apply {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         }
 
         mFusedLocationClient.requestLocationUpdates(
             mlocationRequest, mlocationCallback,
-            Looper.myLooper()
+            Looper.myLooper()!!
         )
     }
 
@@ -294,18 +283,17 @@ class MainActivity : AppCompatActivity() {
                 Gson().fromJson(weatherResponseJsonString, WeatherResponse::class.java)
 
             for(i in weatherList.weather.indices) {
-                //Log.d("Weather name", weatherList.weather.toString())
 
                 binding.apply {
                     tvMain.text = weatherList.weather[i].main
                     tvMainDescription.text = weatherList.weather[i].description
-                    tvTemp.text = weatherList.main.temp.toString() + getUnit(application.resources.configuration.locales.toString())
-                    tvHumidity.text = weatherList.main.humidity.toString() + " per cent"
-                    tvMin.text = weatherList.main.tempMin.toString() + " min"
-                    tvMax.text = weatherList.main.tempMax.toString() + " max"
+                    tvTemp.text = "%.1f".format(weatherList.main.temp) + getUnit(application.resources.configuration.locales.toString())
+                    tvFeelsLike.text = "Feel like\n" + "%.1f".format(weatherList.main.feelsLike)
+                    tvMin.text = "min\n" + "%.1f".format(weatherList.main.tempMin) + getUnit(application.resources.configuration.locales.toString())
+                    tvMax.text = "max\n" + "%.1f".format(weatherList.main.tempMax) + getUnit(application.resources.configuration.locales.toString())
                     tvSpeed.text = weatherList.wind.speed.toString()
-                    tvName.text = weatherList.name
-                    tvCountry.text = weatherList.sys.country
+                    tvName.text = "City | " + weatherList.name
+                    tvCountry.text = "Country | " + weatherList.sys.country
                     tvSunriseTime.text = unixTime(weatherList.sys.sunrise.toLong())
                     tvSunsetTime.text = unixTime(weatherList.sys.sunset.toLong())
                 }
@@ -329,7 +317,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun getUnit(value: String): String {

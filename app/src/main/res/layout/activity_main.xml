@@ -31,18 +31,32 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/card_view_content_padding">
 
-                <ImageView
-                    android:id="@+id/iv_main"
-                    android:layout_width="@dimen/identification_image_size"
-                    android:layout_height="@dimen/identification_image_size"
-                    android:layout_marginEnd="@dimen/identification_image_marginEnd"
-                    android:contentDescription="@string/image_contentDescription"
-                    app:srcCompat="@drawable/snowflake" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="天氣"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="@dimen/label_text_size"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/iv_main"
+                        android:layout_width="@dimen/identification_image_size"
+                        android:layout_height="@dimen/identification_image_size"
+                        android:layout_marginEnd="@dimen/identification_image_marginEnd"
+                        android:contentDescription="@string/image_contentDescription"
+                        app:srcCompat="@drawable/snowflake" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_gravity="bottom">
 
                     <TextView
                         android:id="@+id/tv_main"
@@ -82,20 +96,31 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="@dimen/card_view_content_padding">
-
-                <ImageView
-                    android:id="@+id/iv_humidity"
-                    android:layout_width="@dimen/identification_image_size"
-                    android:layout_height="@dimen/identification_image_size"
-                    android:layout_marginEnd="@dimen/identification_image_marginEnd"
-                    android:contentDescription="@string/image_contentDescription"
-                    app:srcCompat="@drawable/humidity" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="溫度"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="@dimen/label_text_size"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/iv_humidity"
+                        android:layout_width="@dimen/identification_image_size"
+                        android:layout_height="@dimen/identification_image_size"
+                        android:layout_marginEnd="@dimen/identification_image_marginEnd"
+                        android:contentDescription="@string/image_contentDescription"
+                        app:srcCompat="@drawable/humidity" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_gravity="bottom">
                     <TextView
                         android:id="@+id/tv_temp"
                         android:layout_width="match_parent"
@@ -105,15 +130,14 @@
                         android:textSize="@dimen/label_text_size"
                         android:textStyle="bold"
                         tools:text="Degree" />
-
                     <TextView
-                        android:id="@+id/tv_humidity"
+                        android:id="@+id/tv_feelsLike"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/secondary_text_color"
                         android:textSize="@dimen/value_text_size"
-                        tools:text="per cent" />
+                        tools:text="feelsLike" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -143,21 +167,34 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/card_view_content_padding">
 
-                <ImageView
-                    android:id="@+id/iv_min_max"
-                    android:layout_width="@dimen/identification_image_size"
-                    android:layout_height="@dimen/identification_image_size"
-                    android:layout_marginEnd="@dimen/identification_image_marginEnd"
-                    android:contentDescription="@string/image_contentDescription"
-                    app:srcCompat="@drawable/temperature" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="溫差"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="@dimen/label_text_size"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/iv_min_max"
+                        android:layout_width="@dimen/identification_image_size"
+                        android:layout_height="@dimen/identification_image_size"
+                        android:layout_marginEnd="@dimen/identification_image_marginEnd"
+                        android:contentDescription="@string/image_contentDescription"
+                        app:srcCompat="@drawable/temperature" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_gravity="bottom">
 
                     <TextView
-                        android:id="@+id/tv_min"
+                        android:id="@+id/tv_max"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
@@ -167,7 +204,7 @@
                         tools:text="Minimum" />
 
                     <TextView
-                        android:id="@+id/tv_max"
+                        android:id="@+id/tv_min"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
@@ -195,18 +232,31 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/card_view_content_padding">
 
-                <ImageView
-                    android:id="@+id/iv_wind"
-                    android:layout_width="@dimen/identification_image_size"
-                    android:layout_height="@dimen/identification_image_size"
-                    android:layout_marginEnd="@dimen/identification_image_marginEnd"
-                    android:contentDescription="@string/image_contentDescription"
-                    app:srcCompat="@drawable/wind" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="風速"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="@dimen/label_text_size"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/iv_wind"
+                        android:layout_width="@dimen/identification_image_size"
+                        android:layout_height="@dimen/identification_image_size"
+                        android:layout_marginEnd="@dimen/identification_image_marginEnd"
+                        android:contentDescription="@string/image_contentDescription"
+                        app:srcCompat="@drawable/wind" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_gravity="bottom">
 
                     <TextView
                         android:id="@+id/tv_speed"
@@ -248,6 +298,13 @@
             android:orientation="vertical"
             android:padding="@dimen/card_view_content_padding">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="位置"
+                android:textStyle="bold"
+                android:textSize="@dimen/label_text_size" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -259,7 +316,8 @@
                     android:layout_height="@dimen/identification_image_size"
                     android:layout_marginEnd="@dimen/identification_image_marginEnd"
                     android:contentDescription="@string/image_contentDescription"
-                    app:srcCompat="@drawable/location" />
+                    app:srcCompat="@drawable/location"
+                    android:layout_gravity="center"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -293,6 +351,13 @@
                 android:layout_height="@dimen/divider_height"
                 android:layout_margin="@dimen/divider_margin"
                 android:background="@color/divider_background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="日出日落"
+                android:textStyle="bold"
+                android:textSize="@dimen/label_text_size" />
 
             <LinearLayout
                 android:layout_width="match_parent"
