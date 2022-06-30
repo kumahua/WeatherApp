@@ -1,7 +1,7 @@
 # WeatherApp
 透過Retrofit搭配使用FusedLocationProviderClient及lastLocation方法獲得經緯度以抓取openweathermap api上的資料，最後呈現至畫面上。
 
-![image](https://user-images.githubusercontent.com/40682280/176605382-f5a8db8c-3587-46d5-b9c2-de25a6146ef7.png)
+<img src="https://user-images.githubusercontent.com/40682280/176605382-f5a8db8c-3587-46d5-b9c2-de25a6146ef7.png" width="350">
 
 ## 建立Interface
 Interface就是各個連線的接口，每個連線是用GET或POST及其路徑、參數都寫在這裡，將所有連線統一管理。
