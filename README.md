@@ -1,8 +1,10 @@
 # WeatherApp
+透過Retrofit搭配使用FusedLocationProviderClient及lastLocation方法獲得經緯度以抓取openweathermap api上的資料，最後呈現至畫面上。
 
+![image](https://user-images.githubusercontent.com/40682280/176605382-f5a8db8c-3587-46d5-b9c2-de25a6146ef7.png)
 
 ## 建立Interface
-Interface就是各個連線的接口，每個連線是用GET或POST及其路徑、參數都寫在這裡，個人覺得是Retrofit的精華，將所有連線統一管理。
+Interface就是各個連線的接口，每個連線是用GET或POST及其路徑、參數都寫在這裡，將所有連線統一管理。
 
     interface WeatherService {
         @GET("2.5/weather")
@@ -18,7 +20,7 @@ Interface就是各個連線的接口，每個連線是用GET或POST及其路徑�
 ## 建立Retrofit
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(Constants.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create()) //這邊透過 Google 出的 Json 處理工具叫做 Gson 來進行轉換
         .build()
 
     //創造能夠使用WeatherService介面的service物件
